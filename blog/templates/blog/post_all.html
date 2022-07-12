@@ -1,3 +1,6 @@
+{%extends 'base.html'%}
+{%block title%}post_all.html{%endblock%}
+{%block content%}
 <h1>Blog List</h1>
 <br>
 {%for post in posts%}
@@ -19,3 +22,4 @@
         {%endif%}
     </span>
 </div>
+{%endblock%}
