@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'photo.apps.PhotoConfig',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

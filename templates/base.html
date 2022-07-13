@@ -29,8 +29,35 @@
                   <li class="nav-item btn-btn-primary">
                     <a class="nav-link" href="{%url 'photo:index'%}">Photo</a>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" >
+                  <!-- 게시글추가드롭다운 -->
+                  <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >
+                      Add
+                    </a>
+                    <ul class="dropdown-menu" >
+                      <li><a class="dropdown-item" href="{%url 'bookmark:add'%}">Bookmark</a></li>
+                      <li><a class="dropdown-item" href="{%url 'blog:add'%}">Post</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{%url 'photo:album_add'%}">Album</a></li>
+                      <li><a class="dropdown-item" href="{%url 'photo:photo_add'%}">Photo</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >
+                      Change
+                    </a>
+                    <ul class="dropdown-menu" >
+                      <li><a class="dropdown-item" href="{%url 'bookmark:change'%}">Bookmark</a></li>
+                      <li><a class="dropdown-item" href="{%url 'blog:change'%}">Post</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="{%url 'photo:album_change'%}">Album</a></li>
+                      <li><a class="dropdown-item" href="{%url 'photo:photo_change'%}">Photo</a></li>
+                    </ul>
+                  </li>
+
+                  <!-- archive드롭다운 -->
+                  <li class="nav-item dropdown mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" >
                       Util
                     </a>
                     <ul class="dropdown-menu" >
@@ -45,6 +72,26 @@
                   <input class="form-control me-2" type="search" placeholder="global Search" name="search_word">
                   <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
                 </form>
+                <!-- 사용자관련드롭다운 -->
+                <ul class="navbar-nav ml-5 mr-5">
+                  <li class="nav-item dropdown mx-1 btn btn-primary btn-sm">
+                    {%if user.is_active%}
+                    <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                      <i class="fas fa-user"></i>&ensp;{%firstof user.get_short_name user.get_username%}&ensp;</a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="{%url 'logout'%}">Logout</a>
+                      <a class="dropdown-item" href="{%url 'password_change'%}">Change Password</a>
+                    </div>
+                    {%else%}
+                    <a class="nav-link dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">
+                      <i class="fas fa-user"></i>&ensp;Anonymous&ensp;</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{%url 'login'%}">Login</a>
+                        <a class="dropdown-item" href="{%url 'register'%}">Register</a>
+                      </div>
+                      {%endif%}
+                  </li>
+                </ul>
             </div>
             </div>
           </nav>

@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path,include
-from .views import HomeView
+from .views import HomeView,UserCreateView,UserCreateDoneTV
 from django.conf.urls.static import static
 from . import settings
 
@@ -27,6 +27,9 @@ urlpatterns = [
     path('bookmark/',include('bookmark.urls')),
     path('blog/',include('blog.urls')),
     path('photo/',include('photo.urls')),
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('accounts/register/',UserCreateView.as_view(),name='register'),
+    path('accounts/register/done',UserCreateDoneTV.as_view(),name='register_done'),
 ]
 urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
